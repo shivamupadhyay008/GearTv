@@ -1,0 +1,83 @@
+.card-div {
+  display: inline-grid;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 0.5rem;
+  height: 300px;
+}
+.video-card {
+  width: 100%;
+  height: 220px;
+  position: relative;
+}
+
+.card-image {
+  border-radius: 0.5rem;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1rem;
+}
+.card-image-div {
+  position: absolute;
+  /* background-color: blue; */
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.text-div {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  padding: 0 0.5rem;
+  bottom: 0;
+  color: white;
+}
+.card-title {
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+  margin-top: 0.4rem;
+}
+.nomargin {
+  margin: 0;
+}
+
+.card-duration {
+  font-size: 12px;
+  margin-bottom: 0.2rem;
+}
+.card-description {
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--TEXT_COLOR_L3);
+}
+.card-div:hover {
+  box-shadow: 0px 0px 5px 0px rgba(145, 145, 145, 1);
+}
+
+/* l card */
+.l-card-div {
+  display: inline-grid;
+  width: clamp(250px,100%,200px);
+
+  border-radius: 0.5rem;
+  height: 260px;
+}
+.l-video-card {
+  width: 100%;
+  height: 180px;
+  position: relative;
+}
+@media (max-width: 600px) {
+  .card-div {
+    max-width: 100%;
+  }
+}

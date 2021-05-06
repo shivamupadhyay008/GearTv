@@ -1,0 +1,77 @@
+:root {
+  --BRAND_BLUE: #1f80e0;
+  --BRAND_RED: #f15151;
+  --BRAND_ORANGE: #db882a;
+  --BG_GRADIENT_L0: linear-gradient(to bottom, #141b29, #0c111b 300px);
+  --BG_GRADIENT_L1: linear-gradient(to bottom, #192133, #111826);
+  --BG_GRADIENT_L2: linear-gradient(to bottom, #334366, #334366, #1c2940);
+  --CARD_GRADIENT: #030b17;
+  --HEADER_COLOR: #121926;
+  --BG_COLOR_L0: #0c111b;
+  --BG_COLOR_L1: #192133;
+  --BG_COLOR_L2: #334366;
+  --BG_COLOR_L3: rgba(144, 153, 153, 0.1);
+  --BORDER_COLOR_L0: #2e3333;
+  --nav-color: #141b29;
+  --slider-color: #192133;
+  --BORDER_COLOR_L0: #2e3333;
+  --TEXT_COLOR_L0: #fff;
+  --TEXT_COLOR_L1: rgba(255, 255, 255, 0.8);
+  --TEXT_COLOR_L2: rgba(255, 255, 255, 0.6);
+  --TEXT_COLOR_L3: #dadada;
+  --TEXT_COLOR_L4: #909999;
+  --robo-text: "Roboto", "HelveticaNeue-Light", sans-serif;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+p {
+  margin-top: 5px;
+}
+
+body {
+  color: var(--TEXT_COLOR_L0);
+  background-color: var(--BG_COLOR_L0);
+  margin: 0;
+  font-family: "Roboto", "HelveticaNeue-Light", sans-serif;
+}
+
+.App {
+  text-align: center;
+}
+
+.nostyle {
+  list-style: none;
+  text-decoration: none;
+}
+.navmar {
+  margin: 3rem;
+}
+
+.nomar {
+  margin: 0;
+}
+
+.hero-text {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.msg2 {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.padding-px {
+  padding: 20px;
+}
+
+.bottom-bor {
+  border-bottom: 0.5px solid gray;
+}
+
+@media (max-width: 600px) {
+}
