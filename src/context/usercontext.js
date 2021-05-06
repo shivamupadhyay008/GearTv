@@ -7,7 +7,8 @@ export const UserProvider=({children})=>{
     const likedVideos=[];
     const savedVideos=[];
     const playlist=[];
-    const [state,dispatch]=useReducer(theReducer,{likedVideos,savedVideos,playlist})
+    const search=''
+    const [state,dispatch]=useReducer(theReducer,{likedVideos,savedVideos,playlist,search})
 return(
     <userContext.Provider value={{state,dispatch}}>
         {children}

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./navbar.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useUser } from "../../context/usercontext";
 export default function Navbar() {
   const [slider, setSlider] = useState(false);
   const [activeSearch, setActiveSearch] = useState(false);
+  const { dispatch } = useUser();
   return (
     <div className="nav-div">
       <nav className="nav-bar">
@@ -31,10 +33,14 @@ export default function Navbar() {
 
             <div className="slider-items bottom-bor padding-px">
               <div>
-                <span><a href="/">HOME</a></span>
+                <span>
+                  <a href="/">HOME</a>
+                </span>
               </div>
               <div>
-                <span><a href="/uservideos">Watch List</a></span>
+                <span>
+                  <a href="/uservideos">Watch List</a>
+                </span>
               </div>
             </div>
             <div className="slider-items bottom-bor padding-px">
@@ -50,7 +56,9 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-        <div className="your-class"><Link  to="uservideos"> your videos</Link></div>
+        <div className="your-class">
+          <Link to="uservideos"> your videos</Link>
+        </div>
         <div
           className={activeSearch ? "nav-search display-active" : "nav-search "}
         >
@@ -60,7 +68,14 @@ export default function Navbar() {
           ></i>
 
           <span>
-            <input className="search-input" type="text" placeholder="Search" />
+            <input
+              onChange={(event) => {
+                dispatch({ type: "SEARCH", payload: event.target.value });
+              }}
+              className="search-input"
+              type="text"
+              placeholder="Search"
+            />
             <i class="fa fa-search search-icon"></i>
           </span>
           <i class="fa fa-search res-search-icon"></i>
