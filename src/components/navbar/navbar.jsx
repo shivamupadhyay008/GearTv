@@ -16,7 +16,11 @@ export default function Navbar() {
             <span className=""></span>
           </div>
           <a href="/">
-            <img className="gear-pic" src="imgs/geartvCH.png" />
+            <img
+              className="gear-pic"
+              src="imgs/geartvCH.png"
+              alt="image broke"
+            />
           </a>
         </div>
         <div
@@ -39,7 +43,7 @@ export default function Navbar() {
               </div>
               <div>
                 <span>
-                  <a href="/uservideos">Watch List</a>
+                  <Link to="/uservideos">Watch List</Link>
                 </span>
               </div>
             </div>

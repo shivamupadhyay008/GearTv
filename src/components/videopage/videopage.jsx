@@ -12,10 +12,8 @@ import { data } from "../../data";
 import { useUser } from "../../context/usercontext";
 export default function VideoPage() {
   const [like, setLike] = useState(false);
-  const [save, setSave] = useState(false);
   const [showList, setShowList] = useState(false);
   const [videoSave, setVideoSave] = useState(false);
-  const list = ["one", "two", "three"];
   const { id } = useParams();
   const dummy = data.find((item) => item.id == id);
   const { state, dispatch } = useUser();
@@ -92,7 +90,7 @@ export default function VideoPage() {
                     <input
                       className="playlist-checkbox "
                       type="checkbox"
-                     onClick={ dispatch({ type: "PLAYLIST", payload: dummy })}
+                    onClick={ dispatch({ type: "PLAYLIST", payload: dummy })}
                     />
                     <span className="listname">playlist</span>
                   </li>

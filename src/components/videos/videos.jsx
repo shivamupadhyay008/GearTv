@@ -1,18 +1,17 @@
 import { data } from "../../data";
 import "./videos.css";
 import Vcard from "../vcard/Vcard";
-import {useUser} from '../../context/usercontext'
+import { useUser } from "../../context/usercontext";
 export default function Videos() {
-  const {state}=useUser();
-  const {search}=state;
+  const { state } = useUser();
+  const { search } = state;
   const filterData = (data, searchByText) => {
-    return data
-      .filter((a) => {
-        let reg = new RegExp(searchByText, "ig");
-        return reg.test(a.title);
-      });
+    return data.filter((a) => {
+      let reg = new RegExp(searchByText, "ig");
+      return reg.test(a.title);
+    });
   };
-  const fdata=filterData(data,search)
+  const fdata = filterData(data, search);
   return (
     <div>
       <div className="videos-div">

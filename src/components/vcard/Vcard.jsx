@@ -1,6 +1,5 @@
-import { useState } from "react";
 import "./vcard.css";
-import {Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 export default function Vcard({ src, title, view, likes, channelName }) {
   return (
     <div className="card-div">
@@ -11,10 +10,9 @@ export default function Vcard({ src, title, view, likes, channelName }) {
           frameborder="0"
         ></iframe>
         <Link to={`/watch/${src}`}>
-        <div className="card-image-div"></div>
+          <div className="card-image-div"></div>
         </Link>
       </div>
-
       <div className="text-div">
         <p className=" card-title">{title}</p>
         <p className="nomargin card-description">{channelName}</p>
