@@ -1,10 +1,11 @@
 import "./vcard.css";
 import { Link } from "react-router-dom";
-export default function Vcard({ src, title, view, likes, channelName }) {
+export  function Vcard({ src, title, view, likes, channelName }) {
   return (
     <div className="card-div">
       <div className="video-card">
         <iframe
+          title="new"
           className="card-image"
           src={`https://www.youtube.com/embed/${src}`}
           frameborder="0"
@@ -18,7 +19,7 @@ export default function Vcard({ src, title, view, likes, channelName }) {
         <p className="nomargin card-description">{channelName}</p>
         <p className="nomargin card-duration">
           <span>{view} views</span>
-          <span> • {likes} ago</span>
+          <span> • {likes} likes</span>
         </p>
       </div>
     </div>
@@ -30,11 +31,14 @@ export function Listingcard({ src, title, view, likes, channelName }) {
     <div className="l-card-div">
       <div className="l-video-card">
         <iframe
+          title="title1"
           className="card-image"
           src={`https://www.youtube.com/embed/${src}`}
           frameborder="0"
         ></iframe>
-        <div className="card-image-div"></div>
+        <Link to={`/watch/${src}`}>
+          <div className="card-image-div"></div>
+        </Link>
       </div>
 
       <div className="text-div">
@@ -42,7 +46,7 @@ export function Listingcard({ src, title, view, likes, channelName }) {
         <p className="nomargin card-description">{channelName}</p>
         <p className="nomargin card-duration">
           <span>{view} views</span>
-          <span> • {likes} ago</span>
+          <span> • {likes} likes</span>
         </p>
       </div>
     </div>

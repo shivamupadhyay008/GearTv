@@ -1,0 +1,191 @@
+.login-div {
+  background-color: rgba(27, 23, 23, 0.2);
+  font-family: sans-serif;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  z-index: 2;
+}
+
+.box > div {
+  width: 100%;
+}
+
+.input-divs {
+  margin: 2rem 0;
+}
+
+.inputs {
+  border: none;
+  width: 100%;
+  font-size: larger;
+  color: var(--TEXT_COLOR_L1);
+  display: inline-block;
+  outline: none;
+  background-color: inherit;
+  box-sizing: border-box;
+  border-bottom: 2px solid var(--TEXT_COLOR_L2);
+}
+
+.inputs::placeholder {
+  font-size: 25px;
+  color: var(--TEXT_COLOR_L2);
+}
+
+.inputs:focus {
+  background-color: inherit;
+  border-bottom: 2px solid var(--BRAND_BLUE);
+}
+
+.password-input {
+  width: 90%;
+}
+
+.btn {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-disable {
+  background-color: #6295d6;
+}
+.wd {
+  width: 100%;
+}
+.box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3%;
+  margin: auto;
+  width: 40%;
+  min-width: 50vh;
+  background-color: #181f31;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.58);
+}
+
+.box label {
+  display: block;
+  color: var(--TEXT_COLOR_L0);
+}
+
+.btn-login {
+  outline: none;
+  background: var(--BRAND_BLUE);
+  color: white;
+  font-size: large;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.signup-span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--TEXT_COLOR_L1);
+  font-size: 12px;
+}
+
+.singup-text {
+  color: var(--BRAND_BLUE);
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:active {
+  background-color: #1687f7;
+}
+
+.inputs::placeholder {
+  font-size: 1rem;
+}
+
+.login-nav-btn {
+  padding: 0.5rem;
+  color: var(--TEXT_COLOR_L2);
+  cursor: pointer;
+}
+.sign-input {
+  margin: 1rem 0;
+}
+.login-sec {
+  width: 100%;
+  padding: 2rem;
+  margin-top: 1rem;
+}
+
+.back-btn {
+  color: var(--BRAND_BLUE);
+  transform: rotate(-135deg);
+}
+
+.login-hero {
+  color: var(--TEXT_COLOR_L0);
+  margin: 0;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.div-label {
+  font-size: 20px;
+}
+
+.login-nav {
+  position: absolute;
+  top: 2px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.email-error-div {
+  margin: 0;
+  padding: 0;
+  color: red;
+  font-size: small;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.show-div {
+  display: block;
+  transition: all 0.4s linear;
+}
+
+.hide-div {
+  transition: all 0.4s linear;
+  display: none;
+}
+
+.flex {
+  display: inline-flex;
+}
+
+.view-password-btn {
+  color: var(--TEXT_COLOR_L1);
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
+@media screen and (max-width: 600px) {
+  .login-div {
+    padding: 0;
+  }
+
+  .box {
+    width: 80%;
+    height: 50vh;
+    margin: auto;
+  }
+}

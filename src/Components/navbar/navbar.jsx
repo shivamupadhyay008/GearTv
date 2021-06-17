@@ -1,11 +1,14 @@
-import { useState } from "react";
 import "./navbar.css";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useUser } from "../../context/usercontext";
-export default function Navbar() {
+import { AiOutlineUser } from "react-icons/ai";
+export function Navbar() {
+
   const [slider, setSlider] = useState(false);
   const [activeSearch, setActiveSearch] = useState(false);
-  const { dispatch } = useUser();
+  const {state:{userData:{isUserLoggedIn,name}}, dispatch } = useUser();
+  console.log(isUserLoggedIn)
   return (
     <div className="nav-div">
       <nav className="nav-bar">
@@ -15,13 +18,9 @@ export default function Navbar() {
             <span className=""></span>
             <span className=""></span>
           </div>
-          <a href="/">
-            <img
-              className="gear-pic"
-              src="imgs/geartvCH.png"
-              alt="image broke"
-            />
-          </a>
+          <Link to="/">
+            <img className="gear-pic" src="imgs/geartvCH.png" alt="broke" />
+          </Link>
         </div>
         <div
           onClick={() => setSlider(false)}
@@ -30,20 +29,22 @@ export default function Navbar() {
           <div className="nav-list nostyle">
             <div className="bottom-bor">
               <div className="padding-px">
-                <span className="hero-text">Log in</span>
-                <p className="msg2 nomar">For better experience </p>
+                <span className="hero-text">
+                  {isUserLoggedIn ? <AiOutlineUser />  : `Log in`}
+                </span>
+                <p className="msg2 nomar">{!isUserLoggedIn? `For better experience`:`Hii ${name}`} </p>
               </div>
             </div>
 
             <div className="slider-items bottom-bor padding-px">
               <div>
                 <span>
-                  <a href="/">HOME</a>
+                  <Link to="/">Home</Link>
                 </span>
               </div>
               <div>
                 <span>
-                  <Link to="/uservideos">Watch List</Link>
+                  <Link to="/uservideos">Your Videos</Link>
                 </span>
               </div>
             </div>
@@ -59,9 +60,6 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-        </div>
-        <div className="your-class">
-          <Link to="uservideos"> your videos</Link>
         </div>
         <div
           className={activeSearch ? "nav-search display-active" : "nav-search "}
@@ -83,7 +81,11 @@ export default function Navbar() {
             <i class="fa fa-search search-icon"></i>
           </span>
           <i class="fa fa-search res-search-icon"></i>
-          <span className="nav-icon">Login</span>
+          <Link to={isUserLoggedIn?"/profile":"/login"}>
+            <span className="nav-icon">
+              {isUserLoggedIn ? <AiOutlineUser className="usr-ico"/> : `Log in`}
+              </span>
+          </Link>
         </div>
         <i
           onClick={() => setActiveSearch(true)}

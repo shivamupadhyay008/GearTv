@@ -1,0 +1,37 @@
+.spinner-div {
+    background-color: rgba(2, 26, 48, 0.4);
+    width: 100%;
+    height: 94vh;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position:fixed;
+    z-index: 6;
+}
+
+.nb-spinner {
+    width: 75px;
+    height: 75px;
+    margin: 0;
+    background: transparent;
+    border-top: 4px solid blueviolet;
+    border-right: 4px solid transparent;
+    border-radius: 50%;
+    animation-name: spinner;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+.dis-none{
+    display: none;
+}
+
+@keyframes spinner {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

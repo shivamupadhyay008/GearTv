@@ -1,0 +1,63 @@
+.user-section {
+    padding-top:4rem ;
+    position: relative;
+    height: 91.5vh;
+    color: white;
+}
+
+.user-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.user-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.3rem 0;
+    padding: 0;
+    height: 10vh;
+    background-color: var(--BG_COLOR_L1);
+
+}
+
+
+.g-avatar {
+    color: white;
+    border-radius: 50%;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--BRAND_BLUE);
+    position: relative;
+}
+
+.g-avatar-txt-lg {
+    font-size: 2.4rem;
+    width: 58px;
+    height: 58px;
+}
+.content-div{
+    width: 50%;
+}
+.usr-ico{
+font-size: larger;
+position: relative;
+top:4px;
+}
+.cursor{
+    cursor: pointer;
+}
+
+@media screen and (max-width:600px) {
+
+    .content-div{
+        width: 90%;
+    }
+
+}

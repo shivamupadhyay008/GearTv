@@ -2,14 +2,28 @@ import { createContext, useContext, useReducer } from "react";
 import theReducer from "../reducers/thereducer";
 export const userContext = createContext();
 export const UserProvider = ({ children }) => {
+  const userData={
+    isUserLoggedIn:false,
+    userId:"",
+    name:"",
+    email:"",
+  };
+  const isLoading=false;
   const likedVideos = [];
   const savedVideos = [];
-  const playlist = [];
   const search = "";
+  const playlists = [
+    {
+      name: "Playlist",
+      videos: [],
+    }
+  ];
   const [state, dispatch] = useReducer(theReducer, {
+    isLoading,
+    userData,
     likedVideos,
     savedVideos,
-    playlist,
+    playlists,
     search,
   });
   return (

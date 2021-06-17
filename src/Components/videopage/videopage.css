@@ -5,6 +5,7 @@
 .videoframe {
   width: 100%;
   height: 40vw;
+
 }
 .center {
   margin-right: 1rem;
@@ -77,12 +78,16 @@
   display: inline;
   width: 110px;
 }
+
 .add-btn {
   display: inline;
-}
-.add-btn {
   position: relative;
+  padding-top: 10px;
+  padding-bottom: 0px;
   top: 6px;
+}
+.add-btn:active{
+  background-color: var(--TEXT_COLOR_L2);
 }
 .btn-center {
   cursor: pointer;

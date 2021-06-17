@@ -1,53 +1,46 @@
+import {
+  handleUserData,
+  createPlaylist,
+  addToPlaylist,
+  removeFromPlaylist,
+  setPlaylist,
+  setLikedVideo,
+  setSavedVideo,
+} from "./reducer.utils/index";
 export default function theReducer(state, action) {
-  const { likedVideos, savedVideos, playlist } = state;
   switch (action.type) {
-    case "LIKE":
-      if (
-        likedVideos.length == 0 ||
-        !likedVideos.some((item) => item.id == action.payload.id)
-      ) {
-        return {
-          ...state,
-          likedVideos: [...likedVideos, action.payload],
-        };
-      } else {
-        return state;
-      }
-      break;
-
-    case "SAVE":
-      if (
-        savedVideos.length == 0 ||
-        !savedVideos.some((item) => item.id == action.payload.id)
-      ) {
-        return {
-          ...state,
-          savedVideos: [...savedVideos, action.payload],
-        };
-      } else {
-        return state;
-      }
-      break;
-    case "PLAYLIST":
-      if (
-        playlist.length == 0 ||
-        !playlist.some((item) => item.id == action.payload.id)
-      ) {
-        return {
-          ...state,
-          playlist: [...playlist, action.payload],
-        };
-      } else {
-        return state;
-      }
-      break;
+    case "OPEN_LOADER":
+      return { ...state, isLoading: true };
+    case "CLOSE_LOADER":
+      return { ...state, isLoading: false };
+    case "LOGIN":
+      return handleUserData(state, action.payload);
+    case "SET_LIKEDVIDEO":
+      return setLikedVideo(state, action.payload);
+    case "SET_SAVEDVIDEO":
+      return setSavedVideo(state, action.payload);
+    case "SET_PLAYLIST":
+      return setPlaylist(state, action.payload);
+    case "CREATE_PLAYLIST":
+      return createPlaylist(state, action.payload);
+    case "ADD_TO_PLAYLIST":
+      return addToPlaylist(state, action.payload);
+    case "REMOVE_FROM_PLAYLIST":
+      return removeFromPlaylist(state, action.payload);
+    case "LOGOUT":
+      return {
+        ...state,
+        userData:{} ,
+        playlists:[],
+        likedVideos:[],
+        savedVideos: [],
+      };
     case "SEARCH":
       return {
         ...state,
-       search: action.payload ,
+        search: action.payload,
       };
     default:
       return state;
-      break;
   }
 }
