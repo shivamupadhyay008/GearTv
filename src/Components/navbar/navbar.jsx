@@ -1,14 +1,16 @@
 import "./navbar.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 import { useUser } from "../../context/usercontext";
 import { AiOutlineUser } from "react-icons/ai";
+import {openToast} from "../index";
 export function Navbar() {
 
   const [slider, setSlider] = useState(false);
   const [activeSearch, setActiveSearch] = useState(false);
   const {state:{userData:{isUserLoggedIn,name}}, dispatch } = useUser();
   console.log(isUserLoggedIn)
+  const navigate =useNavigate();
   return (
     <div className="nav-div">
       <nav className="nav-bar">
@@ -28,25 +30,48 @@ export function Navbar() {
         >
           <div className="nav-list nostyle">
             <div className="bottom-bor">
-              <div className="padding-px">
+              <div className="padding-px" onClick={()=>{
+                if(!isUserLoggedIn)navigate("/login")
+              }}>
                 <span className="hero-text">
-                  {isUserLoggedIn ? <AiOutlineUser />  : `Log in`}
+                  {isUserLoggedIn ? <AiOutlineUser /> : `Log in`}
                 </span>
-                <p className="msg2 nomar">{!isUserLoggedIn? `For better experience`:`Hii ${name}`} </p>
+                <p className="msg2 nomar">
+                  {!isUserLoggedIn ? `For better experience` : `Hii ${name}`}{" "}
+                </p>
               </div>
             </div>
 
             <div className="slider-items bottom-bor padding-px">
-              <div>
+              <div className="btn-clk">
                 <span>
                   <Link to="/">Home</Link>
                 </span>
               </div>
-              <div>
-                <span>
-                  <Link to="/uservideos">Your Videos</Link>
-                </span>
-              </div>
+              {isUserLoggedIn ? (
+                <div className="btn-clk">
+                  <span>
+                    <Link to="/uservideos">Your Videos</Link>
+                  </span>
+                </div>
+              ) : (
+                ""
+              )}
+              {isUserLoggedIn ? (
+                <div
+                  className="btn-clk"
+                  onClick={() => {
+                    dispatch({ type: "LOGOUT" });
+                    openToast("log out success", true);
+                    navigate("/");
+                    localStorage.removeItem("GEARTV_USER_TOKEN");
+                  }}
+                >
+                  <span>Logout</span>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
             <div className="slider-items bottom-bor padding-px">
               <div>
@@ -81,10 +106,14 @@ export function Navbar() {
             <i class="fa fa-search search-icon"></i>
           </span>
           <i class="fa fa-search res-search-icon"></i>
-          <Link to={isUserLoggedIn?"/profile":"/login"}>
+          <Link to={isUserLoggedIn ? "/profile" : "/login"}>
             <span className="nav-icon">
-              {isUserLoggedIn ? <AiOutlineUser className="usr-ico"/> : `Log in`}
-              </span>
+              {isUserLoggedIn ? (
+                <AiOutlineUser className="usr-ico" />
+              ) : (
+                `Log in`
+              )}
+            </span>
           </Link>
         </div>
         <i

@@ -106,6 +106,10 @@ a{
 .your-class{
 font-weight: bold;
 }
+.btn-clk:active{
+  background-color: #0f172b ;
+
+}
 @media (max-width: 600px) {
   .search-icon {
     display: none;
