@@ -32,7 +32,6 @@ export function Navbar() {
             <div className="bottom-bor">
               <div className="padding-px" onClick={()=>{
                 if(!isUserLoggedIn)navigate("/login")
-
               }}>
                 <span className="hero-text" onClick={()=>navigate("/profile")}>
                   {isUserLoggedIn ? <AiOutlineUser /> : `Log in`}

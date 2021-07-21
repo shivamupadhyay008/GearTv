@@ -96,7 +96,7 @@ useEffect(()=>{
               <ThumbUpAltOutlinedIcon className="video-icon" />
             )}
           </div>
-          <span>{video.likes} likes</span>
+          <span>{like ?video.likes+1:video.likes} likes</span>
         </div>
         <div className="center save-ico">
           <div
