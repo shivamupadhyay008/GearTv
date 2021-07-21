@@ -74,7 +74,6 @@ useEffect(()=>{
                     video.views
                   )
                 : await removeLikedVideos(userId, video.user_id);
-               console.log(response);
               if (response.status === 200) {
                 dispatch({ type: "SET_LIKEDVIDEO" ,payload:response.data.likedvideos});
                 openToast(

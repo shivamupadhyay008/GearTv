@@ -3,19 +3,22 @@ import{Link ,useNavigate} from "react-router-dom";
 import {openToast} from "../index"
 import {useUser} from "../../context/usercontext"
 export function Profile() {
-  const {dispatch} =useUser();
+  const {dispatch,state} =useUser();
   const navigate=useNavigate();
+  console.log(state)
   return (
     <section className="user-section">
       <div className="user-div">
         <div class="avatar">
-          <div class="g-avatar g-avatar-txt-lg">u</div>
+          <div class="g-avatar g-avatar-txt-lg">
+            {state.userData.name.slice(0, 1)}
+          </div>
         </div>
-        <p>user</p>
+        <p>{state.userData.name}</p>
         <div className="content-div">
           <span>Email </span>
           <p className="user-heading">
-            <span>userEmail</span>
+            <span>{state.userData.email}</span>
           </p>
           <Link to="/uservideos">
             {" "}
@@ -23,8 +26,8 @@ export function Profile() {
           </Link>
           <p
             onClick={() => {
-              dispatch({type:"LOGOUT"})
-              openToast("log out success",true)
+              dispatch({ type: "LOGOUT" });
+              openToast("log out success", true);
               navigate("/");
               localStorage.removeItem("GEARTV_USER_TOKEN");
             }}
