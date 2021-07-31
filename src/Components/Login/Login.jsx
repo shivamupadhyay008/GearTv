@@ -2,7 +2,7 @@ import "./login.css";
 import { useState } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { userLogin } from "../../apis/api.utils";
-import { useUser } from "../../context/usercontext"
+import { useUser } from "../../context/usercontext";
 import ClearOutlinedIcon from "@material-ui/icons/ClearOutlined";
 import CallMadeOutlinedIcon from "@material-ui/icons/CallMadeOutlined";
 import ErrorOutlineOutlinedIcon from "@material-ui/icons/ErrorOutlineOutlined";
@@ -11,7 +11,7 @@ import VisibilityOffOutlinedIcon from "@material-ui/icons/VisibilityOffOutlined"
 import ArrowForwardIosOutlinedIcon from "@material-ui/icons/ArrowForwardIosOutlined";
 import { openToast } from "../Toast/Toast";
 export function Login() {
-  const {dispatch} =useUser()
+  const { dispatch } = useUser();
   const { state } = useLocation();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -44,16 +44,12 @@ export function Login() {
     }
   };
 
-  async function login() {
-    validateEmail(email);
-    if (next === "userok") {
-      validatePassword(password);
-    }
-    if (next === "userok" && !passwordValidation) {
+  async function login(obj) {
+    if(obj?.guest){
+      alert("ss")
       dispatch({ type: "OPEN_LOADER" });
-      const response = await userLogin(email,password);
-      console.log("in login", response)
-      if (response.status===200) {
+      const response = await userLogin("shivam@gmail.com", "user123");
+      if (response.status === 200) {
         localStorage.setItem("GEARTV_USER_TOKEN", response.data.token);
         dispatch({
           type: "LOGIN",
@@ -63,18 +59,44 @@ export function Login() {
               email: response.data.user.email,
               id: response.data.user._id,
             },
-            playlists:response.data.user.playlists,
-            likedVideos:response.data.user.liked_video,
-            savedVideos:response.data.user.saved_video
+            playlists: response.data.user.playlists,
+            likedVideos: response.data.user.liked_video,
+            savedVideos: response.data.user.saved_video,
+          },
+        });
+        navigate(state?.from ? state.from : "/");
+    }
+  }else{
+    validateEmail(email);
+    if (next === "userok") {
+      validatePassword(password);
+    }
+    if (next === "userok" && !passwordValidation) {
+      dispatch({ type: "OPEN_LOADER" });
+      const response = await userLogin(email, password);
+      console.log("in login", response);
+      if (response.status === 200) {
+        localStorage.setItem("GEARTV_USER_TOKEN", response.data.token);
+        dispatch({
+          type: "LOGIN",
+          payload: {
+            user: {
+              name: response.data.user.name,
+              email: response.data.user.email,
+              id: response.data.user._id,
+            },
+            playlists: response.data.user.playlists,
+            likedVideos: response.data.user.liked_video,
+            savedVideos: response.data.user.saved_video,
           },
         });
         navigate(state?.from ? state.from : "/");
       } else {
-        console.log("hheheh")
         openToast("User or password incorrect", false);
       }
-       dispatch({ type: "CLOSE_LOADER" });
+      dispatch({ type: "CLOSE_LOADER" });
     }
+  }
   }
   return (
     <div className="login-div">
@@ -173,7 +195,7 @@ export function Login() {
             <button
               className="btn-login"
               disabled={email.length !== 0 ? "" : true}
-              className = {`btn-login ${email.length !== 0 ? "" : "btn-disable"}`}
+              className={`btn-login ${email.length !== 0 ? "" : "btn-disable"}`}
               onClick={() => {
                 login();
               }}
@@ -190,6 +212,14 @@ export function Login() {
             </Link>
           </span>
         </section>
+        <span
+          className="guest-lg"
+          onClick={() => {
+            login({guest:true});
+          }}
+        >
+          Login as guest
+        </span>
       </div>
     </div>
   );

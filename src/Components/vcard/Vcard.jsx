@@ -4,12 +4,12 @@ export  function Vcard({ src, title, view, likes, channelName }) {
   return (
     <div className="card-div">
       <div className="video-card">
-        <iframe
-          title="new"
+        <img
           className="card-image"
-          src={`https://www.youtube.com/embed/${src}`}
-          frameborder="0"
-        ></iframe>
+          src={`https://img.youtube.com/vi/${src}/0.jpg`}
+          alt=""
+          srcset=""
+        />
         <Link to={`/watch/${src}`}>
           <div className="card-image-div"></div>
         </Link>
@@ -27,15 +27,11 @@ export  function Vcard({ src, title, view, likes, channelName }) {
 }
 
 export function Listingcard({ src, title, view, likes, channelName }) {
+
   return (
     <div className="l-card-div">
       <div className="l-video-card">
-        <iframe
-          title="title1"
-          className="card-image"
-          src={`https://www.youtube.com/embed/${src}`}
-          frameborder="0"
-        ></iframe>
+       <img className="card-image" src={`https://img.youtube.com/vi/${src}/0.jpg`} alt="" srcset="" />
         <Link to={`/watch/${src}`}>
           <div className="card-image-div"></div>
         </Link>

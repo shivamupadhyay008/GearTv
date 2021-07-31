@@ -156,7 +156,7 @@ export const userLogin = async (email, password, authToken) => {
     return response;
   } catch (err) {
     console.log(err.message);
-    return 404;
+    return err;
   }
 };
 
