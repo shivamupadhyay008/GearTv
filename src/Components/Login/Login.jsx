@@ -46,7 +46,6 @@ export function Login() {
 
   async function login(obj) {
     if(obj?.guest){
-      alert("ss")
       dispatch({ type: "OPEN_LOADER" });
       const response = await userLogin("shivam@gmail.com", "user123");
       if (response.status === 200) {
@@ -74,7 +73,6 @@ export function Login() {
     if (next === "userok" && !passwordValidation) {
       dispatch({ type: "OPEN_LOADER" });
       const response = await userLogin(email, password);
-      console.log("in login", response);
       if (response.status === 200) {
         localStorage.setItem("GEARTV_USER_TOKEN", response.data.token);
         dispatch({
