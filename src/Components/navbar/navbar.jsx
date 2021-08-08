@@ -5,11 +5,9 @@ import { useUser } from "../../context/usercontext";
 import { AiOutlineUser } from "react-icons/ai";
 import {openToast} from "../index";
 export function Navbar() {
-
   const [slider, setSlider] = useState(false);
   const [activeSearch, setActiveSearch] = useState(false);
   const {state:{userData:{isUserLoggedIn,name}}, dispatch } = useUser();
-  console.log(isUserLoggedIn)
   const navigate =useNavigate();
   return (
     <div className="nav-div">

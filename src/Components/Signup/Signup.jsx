@@ -40,7 +40,6 @@ export function Signup() {
     try{
       dispatch({type:"OPEN_LOADER"});
       const response = await userSignup(name,email,password);
-      console.log(response)
       if(response.status===200){
       openToast("Sign up is success", true);
       setEmail('');
@@ -164,7 +163,6 @@ export function Signup() {
               className = {` btn-login ${(email.length !== 0) | (name.length !== 0) ? "" : "btn-disable"}`}
               onClick={() => {
                 const validate = validateInput(email, password, name);
-                console.log(validate);
                 if (validate) {
                   signUp(name, email, password);
                 }

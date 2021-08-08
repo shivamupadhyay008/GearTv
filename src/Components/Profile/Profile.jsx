@@ -5,7 +5,6 @@ import {useUser} from "../../context/usercontext"
 export function Profile() {
   const {dispatch,state} =useUser();
   const navigate=useNavigate();
-  console.log(state)
   return (
     <section className="user-section">
       <div className="user-div">

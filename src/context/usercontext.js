@@ -12,12 +12,7 @@ export const UserProvider = ({ children }) => {
   const likedVideos = [];
   const savedVideos = [];
   const search = "";
-  const playlists = [
-    {
-      name: "Playlist",
-      videos: [],
-    }
-  ];
+  const playlists = [];
   const [state, dispatch] = useReducer(theReducer, {
     isLoading,
     userData,

@@ -37,8 +37,18 @@ export function VideoPage() {
     (async () => {
       const response = await getVideo(id);
       setVideo(response.data.video[0]);
-      console.log(response.data.video[0]);
+      state.likedVideos.forEach((item) => {
+        if (item.video_id === response.data.video[0].video_id) {
+          setLike(true);
+        }
+      });
+      state.savedVideos.forEach((item) => {
+        if (item.video_id === response.data.video[0].video_id) {
+          setVideoSave(true);
+        }
+      });
     })();
+
     dispatch({ type: "CLOSE_LOADER" });
   }, []);
   return (
@@ -111,14 +121,13 @@ export function VideoPage() {
                   const response = !videoSave
                     ? await setSavedVideo(
                         userId,
-                        video.id,
+                        video.video_id,
                         video.channel_name,
                         video.likes,
                         video.title,
                         video.views
                       )
                     : await removeSavedVideos(userId, video.video_id);
-                  console.log(response);
                   if (response.status === 200) {
                     setVideoSave(!videoSave);
                     dispatch({
@@ -160,15 +169,15 @@ export function VideoPage() {
             <div className={showList ? "playlistdiv" : "playlistdiv enable"}>
               <ul>
                 {playlists.map((item) => {
-                  console.log(item)
                   return (
                     <li key={item._id}>
                       <input
                         className="playlist-checkbox"
                         type="checkbox"
-                        checked={item.videos.some((item)=>item.video_id===id)}
+                        checked={item.videos.some(
+                          (item) => item.video_id === id
+                        )}
                         onClick={async (event) => {
-                          console.log("values", event.target.checked);
                           dispatch({ type: "OPEN_LOADER" });
                           const response = event.target.checked
                             ? await addPlaylist(
